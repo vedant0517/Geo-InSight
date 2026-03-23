@@ -1,5 +1,7 @@
 # 🗺️ Geo InSight
 
+**GitHub Repository:** [https://github.com/vedant0517/Geo-InSight.git](https://github.com/vedant0517/Geo-InSight.git)
+
 An interactive R Shiny web application for geographical data visualization of **India's Crime Rates** and **Live Air Quality (AQI)** across states and cities.
 
 > **College Group Project** | Data: NCRB 2022 + Open-Meteo Live AQI API
