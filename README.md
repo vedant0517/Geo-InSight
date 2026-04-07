@@ -1,111 +1,74 @@
-# 🗺️ Geo InSight
+# Geo InSight
 
-**GitHub Repository:** [https://github.com/vedant0517/Geo-InSight.git](https://github.com/vedant0517/Geo-InSight.git)
+Geo InSight is an interactive R Shiny dashboard for exploring India crime statistics and live city-level air quality in one interface. The app combines a state-wise crime map, analytics views, comparison tools, and a full dataset table.
 
-An interactive R Shiny web application for geographical data visualization of **India's Crime Rates** and **Live Air Quality (AQI)** across states and cities.
+> College group project using NCRB 2022 data and the Open-Meteo Air Quality API.
 
-> **College Group Project** | Data: NCRB 2022 + Open-Meteo Live AQI API
+## What The App Includes
 
----
+- Locations: the main crime map with year, trend, and sort filters, plus a search box that pans to a selected state or UT
+- Analytics: overview cards, trend charts, and summary panels
+- Compare: side-by-side comparison for any two states
+- Reports: the current implementation routes this tab to the pollution or AQI view
+- Dataset: a full searchable table of the NCRB dataset
 
-## 📸 Features
+## Highlights
 
-| Feature | Description |
-|---------|-------------|
-| 🗺️ Interactive Crime Map | Circle markers for all 36 states/UTs sized and colored by crime rate |
-| 🌿 Live AQI Map | Real-time air quality data for 9 major Indian cities via Open-Meteo API |
-| ⚡ Instant Filters | Year (2020–2022), trend, and sort filters update the map immediately |
-| 🔍 State Search | Search bar pans the map to any state in real-time |
-| 📊 Analytics Panel | Overview stats, 12-month trend chart, top-10 charts, distribution bars |
-| ⚖️ Compare Mode | Side-by-side regional divergence analysis for any two states |
-| 📋 Dataset Tab | Full sortable/searchable NCRB data table with inline color bars |
-| 🕐 Live Timestamp | AQI panel shows when data was last refreshed |
-| 💾 Export | Download full dataset or comparison report as CSV |
+- All 36 states and union territories are shown on the crime map
+- Markers are sized and colored by crime intensity
+- Live AQI is fetched for 9 Indian cities from Open-Meteo
+- Clicking a marker opens a detail card with state-level metrics
+- Compare and dataset views support CSV export
+- AQI refreshes are timestamped so users can see when the live data was last updated
 
----
+## Getting Started
 
-## 🚀 Getting Started
+1. Install R from [CRAN](https://cran.r-project.org/) if it is not already installed.
+2. Open the project in RStudio or VS Code.
+3. Run the app with `start_project.R`:
 
-### 1. Install R
-Download from [https://cran.r-project.org](https://cran.r-project.org) if not already installed.
-Tested on **R 4.5.2**.
-
-### 2. Install Required Packages (run once)
 ```r
-# In RStudio or terminal:
-source("install_packages.R")
-# OR run via terminal:
-# Rscript install_packages.R
+source("start_project.R")
 ```
 
-### 3. Run the App
+`start_project.R` checks for required packages and launches the app from the project root.
+
+If you want to run the app directly, open `app.R` and start it with:
+
 ```r
 shiny::runApp("app.R")
 ```
-Or open `app.R` in RStudio and click **▶ Run App**.
 
-**From terminal (Windows):**
-```powershell
-& "C:\Program Files\R\R-4.5.2\bin\Rscript.exe" -e "shiny::runApp('app.R')"
-```
+You can also run the workspace task in VS Code with `Geo InSight: Run App`, which now launches `start_project.R`.
 
-The app will open at `http://127.0.0.1:<port>` in your browser.
-
----
-
-## 📦 Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| Framework | R Shiny |
-| Mapping | Leaflet for R |
-| Charts | Plotly for R |
-| Data Table | DT (DataTables) |
-| Live Data | Open-Meteo Air Quality API (free, no key needed) |
-| HTTP | httr + jsonlite |
-| Data Wrangling | dplyr |
-| Fonts | Google Fonts — Manrope, Inter |
-
----
-
-## 📁 Project Structure
+## Project Structure
 
 ```
-DAr/
-├── app.R                 # Main Shiny application (UI + Server)
-├── install_packages.R    # One-time package installer
-└── README.md             # This file
+Geo InSight/
+├── app.R
+├── .vscode/tasks.json
+├── start_project.R
+├── PROJECT_EXPLANATION.md
+├── Group-15_GeoInsight_Project_Report.md
+└── README.md
 ```
 
----
+## Data Sources
 
-## 📊 Data Sources
+- Crime data: NCRB 2022 state and union-territory crime totals
+- Air quality: Open-Meteo Air Quality API for live PM2.5, PM10, NO2, and ozone readings
 
-- **Crime Data:** [NCRB (National Crime Records Bureau) 2022](https://ncrb.gov.in) — Total IPC cognizable crimes for 36 states/UTs
-- **Air Quality:** [Open-Meteo Air Quality API](https://open-meteo.com/en/docs/air-quality-api) — Live PM2.5, PM10, NO₂, Ozone for 9 cities
+## Cities Covered For AQI
 
-> ⚠️ Tamil Nadu shows a ~78% drop in reported crimes (2020→2022), likely due to a reporting methodology change, not an actual reduction.
+Delhi, Mumbai, Bangalore, Kolkata, Chennai, Hyderabad, Pune, Ahmedabad, and Nagpur
 
----
+## Notes
 
-## 🏙️ Cities Covered (AQI)
+- The crime dataset is stored in memory inside `app.R`.
+- Live AQI depends on the external Open-Meteo service and network availability.
+- The app is intended for academic and educational use.
 
-Delhi · Mumbai · Bangalore · Kolkata · Chennai · Hyderabad · Pune · Ahmedabad · Nagpur
-
----
-
-## 🎛️ How to Use
-
-1. **Crime Map** — Select year/trend/sort filters in the sidebar → map updates instantly. Click any state marker to see its detailed stats card. The map flies to the selected state.
-2. **Pollution Map** — Click "Pollution (AQI)" in the sidebar to switch to AQI city markers. Click "Refresh Live Data" to fetch current readings.
-3. **Analytics** — Click the "Analytics" tab in the top nav to see charts, top-10 rankings, and distribution breakdowns.
-4. **Compare** — Click "Compare" to pick two states and see a side-by-side divergence analysis.
-5. **Dataset** — Click "Dataset" to browse the full NCRB table with search and sorting.
-6. **Search** — Type a state name in the navbar search box to pan the map to it.
-
----
-
-## 👥 Team
+## Team
 
 | Name | Roll | ID |
 |------|------|----|
@@ -113,12 +76,11 @@ Delhi · Mumbai · Bangalore · Kolkata · Chennai · Hyderabad · Pune · Ahmed
 | Vibhanshu Murlidhar Kapse | 181 | 24071767 |
 | Yash Dnyaneshwar Nimje | 182 | 24070084 |
 | Yash Vijay Bhasakhetre | 183 | 24070603 |
+| Omkar Ade | 301 | 18030186 |
 
-> **Institution:** Yeshwantrao Chavan College of Engineering, Nagpur
-> **Course:** Data Analytics using R (Instructor: Sharmeen Ahmed)
+Institution: Yeshwantrao Chavan College of Engineering, Nagpur
+Course: Data Analytics using R (Instructor: Sharmeen Ahmed)
 
----
+## License
 
-## 📄 License
-
-For academic/educational use only. Crime data © NCRB India. AQI data © Open-Meteo (CC BY 4.0).
+For academic and educational use only. Crime data copyright NCRB India. AQI data copyright Open-Meteo under CC BY 4.0.

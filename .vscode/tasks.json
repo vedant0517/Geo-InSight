@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Geo InSight: Run App",
+      "type": "shell",
+      "command": "Rscript",
+      "args": [
+        "${workspaceFolder}/start_project.R"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}
